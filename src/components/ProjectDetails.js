@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
-import FeatureList from './FeatureList';
+import FeatureDetails from './FeatureDetails';
 
-const ProjectDetails = () => {
-    const {project} = useContext(ProjectContext);
-    console.log(project)
+const ProjectDetails = ({project}) => {
     return (
         <div className="projectDetail">
-            <h1>{project.title}</h1>
-            <FeatureList features={project.features}/>
+            <div className='projectTitle'>{project.title}</div>
+            {project.features.map(feature => {
+                    return (<FeatureDetails feature={feature} key={feature.id} />)
+                })}
         </div>
     );
 }
