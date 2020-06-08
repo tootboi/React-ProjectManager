@@ -9,9 +9,10 @@ const ProjectList = () => {
                 {projects.map(project => {
                     return (<ProjectDetails project={project} key={project.id}/>)
                 })}
+                <div className="addProject">&oplus; add a new project</div>
         </div>
     ) : (
-        <div className="empty">No projects</div>
+        <div className="addProject">&oplus; add a new project</div>
     );
 }
  
