@@ -20,6 +20,10 @@ const ProjectContextProvider = (props) => {
         {title: 'test project2', features: [
             {feature: 'feature1', id: 'unique2-1'}
         ], id: 'unique2'},
+        {title: 'project manager', features: [
+            {feature: 'number of features and percentage done', id: 'unique3-1'},
+            {feature: 'overlay for editing and adding', id: 'unique3-2'},
+        ], id: 'unique3'},
     ]);
     return (
         <ProjectContext.Provider value={{projects, dispath}}>
