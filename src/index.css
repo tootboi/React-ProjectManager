@@ -31,7 +31,7 @@ body {
   display: none;
 }
 
-.featureList div {
+.feature {
   white-space: normal;
   display: inline-block;
   margin: 1vh;
@@ -40,8 +40,17 @@ body {
   width: 17vh;
   border-radius: 10px;
   overflow-wrap: break-word;
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
+}
+
+.featureContainer {
+  height: 100%;
+}
+
+.featureContainer > div{
+  margin: 10px;
 }
 
 div.project {
@@ -65,10 +74,6 @@ div.projectTitle {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .04em #f8f8f8;
   margin-bottom: .5vh;
-}
-
-.projectTitle p {
-  margin: 0;
 }
 
 .addProject {
