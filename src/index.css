@@ -64,7 +64,7 @@ div.project {
   align-items: center;
 }
 
-div.projectTitle {
+.projectTitle {
   background-color: transparent;
   text-transform: uppercase;
   font-weight: bold;
@@ -93,4 +93,71 @@ div.projectTitle {
   font-size: 1.1em;
   color: #f8f8f8;
   cursor: pointer;
+}
+
+.projectOverlay > div{
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(32, 32, 32, 0.3);
+}
+
+.featureForm {
+  height: 80vh;
+  width: 60vw;
+  background-color: #f8f8f8;
+  margin: 10vh 20vw;
+  border-radius: 15px;
+  position: relative;
+}
+
+.closeBtn {
+  cursor: pointer;
+  font-size: 2em;
+  text-align: center;
+  color: #37bfd9;
+}
+
+.featureForm > div.projectTitle {
+  color: #37bfd9;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .04em #37bfd9;
+}
+
+form {
+  position: absolute;
+  width: 100%;
+  bottom: 1vh;
+  margin: auto;
+}
+
+input[type='text'] {
+  width: 96%;
+  padding: .3% 2%;
+  margin: auto;
+  border-width: 0;
+  border-bottom: 2px solid #64bdba;
+  background-color: transparent;
+  font-size: 1.5em;
+  color: #64bdba;
+}
+
+input[type='text']:focus {
+  outline-width: 0;
+}
+
+input[type='submit'] {
+  display: block;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: #74bcaf;
 }
