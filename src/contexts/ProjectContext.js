@@ -4,7 +4,7 @@ import { projectReducer } from '../reducers/projectReducer';
 export const ProjectContext = createContext();
 
 const ProjectContextProvider = (props) => {
-    const [projects, dispath] = useReducer(projectReducer, [
+    const [projects, dispatch] = useReducer(projectReducer, [
         {title: 'test project', features: [
             {feature: 'feature1', id: 'unique1-1'},
             {feature: 'feature2', id: 'unique1-2'},
@@ -26,7 +26,7 @@ const ProjectContextProvider = (props) => {
         ], id: 'unique3'},
     ]);
     return (
-        <ProjectContext.Provider value={{projects, dispath}}>
+        <ProjectContext.Provider value={{projects, dispatch}}>
             { props.children }
         </ProjectContext.Provider>
     );
