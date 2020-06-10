@@ -7,6 +7,8 @@ import ProjectOverlay from './ProjectOverlay';
 const ProjectDetails = ({project}) => {
     const addProject = (e) => {
         document.getElementById('featureForm'+project.id).style.display = 'block';
+        // this line adds focus text input field of feature form. There is def a better way to do this.
+        document.getElementById('featureForm'+project.id).children[0].children[2].children[0].focus();
     }
     const deleteProject = (e) => {
         document.getElementById('projectOverlay'+project.id).style.display = 'block';
