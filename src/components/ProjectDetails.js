@@ -1,22 +1,29 @@
 import React from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
 import FeatureDetails from './FeatureDetails';
-import ProjectForm from './ProjectForm';
+import FeatureForm from './FeatureForm';
+import ProjectOverlay from './ProjectOverlay';
 
 const ProjectDetails = ({project}) => {
     const addProject = (e) => {
-        document.getElementById('overlay'+project.id).style.display = 'block';
+        document.getElementById('featureForm'+project.id).style.display = 'block';
+    }
+    const deleteProject = (e) => {
+        document.getElementById('projectOverlay'+project.id).style.display = 'block';
     }
     return (
         <div className="projectDetail">
-            <div className="projectOverlay">
-                <div id={'overlay'+project.id}>
-                    <ProjectForm project={project}/>
+            <div className="overlayContainer">
+                <div id={'featureForm'+project.id}>
+                    <FeatureForm project={project}/>
+                </div>
+                <div id={'projectOverlay'+project.id}>
+                    <ProjectOverlay project={project}/>
                 </div>
             </div>
             <div className='project'>
                 <div className="projectContainer">
-                    <div className='projectTitle'>{project.title}</div>
+                    <div className='projectTitle' onClick={deleteProject}>{project.title}</div>
                     <div className='addFeature' onClick={addProject}>
                         &oplus; <br/> add a feature
                     </div>

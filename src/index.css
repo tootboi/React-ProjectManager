@@ -74,6 +74,7 @@ div.project {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .04em #f8f8f8;
   margin-bottom: .5vh;
+  cursor: pointer;
 }
 
 .addProject {
@@ -95,7 +96,7 @@ div.project {
   cursor: pointer;
 }
 
-.projectOverlay > div{
+.overlayContainer > div{
   position: fixed;
   display: none;
   width: 100%;
@@ -107,7 +108,7 @@ div.project {
   background-color: rgba(32, 32, 32, 0.3);
 }
 
-.featureForm {
+.overlay {
   height: 80vh;
   width: 60vw;
   background-color: #f8f8f8;
@@ -123,7 +124,7 @@ div.project {
   color: #37bfd9;
 }
 
-.featureForm > div.projectTitle {
+.overlay > div.projectTitle {
   color: #37bfd9;
   text-align: center;
   -webkit-text-fill-color: transparent;
@@ -160,4 +161,13 @@ input[type='submit'] {
   cursor: pointer;
   font-size: 1.1em;
   color: #74bcaf;
+}
+
+input[type='submit']:focus {
+  outline-width: 0;
+}
+
+.overlayHr {
+  border: 0;
+  border-bottom: 2px solid #64bdba;
 }
