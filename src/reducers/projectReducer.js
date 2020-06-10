@@ -17,6 +17,12 @@ export const projectReducer = (state, action) => {
                     return project
                 }
             })
+        case 'ADD_PROJECT':
+            return [...state, {
+                title: action.title,
+                features: [],
+                id: uuidv1()
+            }]
         case 'DELETE_PROJECT':
             return state.filter(project => project.id !== action.id)
         default:
