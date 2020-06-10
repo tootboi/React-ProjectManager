@@ -5,7 +5,7 @@ import FeatureForm from './FeatureForm';
 import ProjectOverlay from './ProjectOverlay';
 
 const ProjectDetails = ({project}) => {
-    const addProject = (e) => {
+    const addFeature = (e) => {
         document.getElementById('featureForm'+project.id).style.display = 'block';
         // this line adds focus text input field of feature form. There is def a better way to do this.
         document.getElementById('featureForm'+project.id).children[0].children[2].children[0].focus();
@@ -26,7 +26,7 @@ const ProjectDetails = ({project}) => {
             <div className='project'>
                 <div className="projectContainer">
                     <div className='projectTitle' onClick={deleteProject}>{project.title}</div>
-                    <div className='addFeature' onClick={addProject}>
+                    <div className='addFeature' onClick={addFeature}>
                         &oplus; <br/> add a feature
                     </div>
                 </div>

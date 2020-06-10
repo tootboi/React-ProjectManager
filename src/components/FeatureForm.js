@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
 
-const ProjectForm = ({project}) => {
+const FeatureForm = ({project}) => {
     const { dispatch } = useContext(ProjectContext);
     const [feature, setFeature] = useState('');
 
@@ -26,4 +26,4 @@ const ProjectForm = ({project}) => {
     );
 }
  
-export default ProjectForm;
+export default FeatureForm;
