@@ -11,10 +11,10 @@ const ProjectForm = ({project}) => {
         setFeature('');
     }
     const overlayOff = (e) => {
-        document.getElementById('overlay'+project.id).style.display = 'none';
+        document.getElementById('featureForm'+project.id).style.display = 'none';
     }
     return (
-        <div className="featureForm">
+        <div className="overlay">
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
             <div className='projectTitle'>{ project.title }</div>
             <form action="" onSubmit={handleSubmit}>
