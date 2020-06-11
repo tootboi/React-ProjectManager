@@ -33,7 +33,7 @@ const ProjectDetails = ({project}) => {
             </div>
             <div className="featureList">
                 {project.features.map(feature => {
-                        return (<FeatureDetails feature={feature} key={feature.id} />)
+                        return (<FeatureDetails feature={feature} project={project} key={feature.id} />)
                     })}
             </div>
         </div>
