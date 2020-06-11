@@ -5,10 +5,14 @@ const FeatureOverlay = ({feature, project}) => {
     const { dispatch } = useContext(ProjectContext);
     const [newFeature, setFeature] = useState(feature.feature);
 
-    const handleSubmit = (e) => {
+    const editFeature = (e) => {
         e.preventDefault();
         dispatch({type: 'EDIT_FEATURE', editFeature: {feature: newFeature, featureId: feature.id, projectId: project.id}});
         overlayOff();
+    }
+    const handleDelete = (e) => {
+        e.preventDefault();
+        dispatch({type: 'DELETE_FEATURE', deleteFeature: {projectId: project.id, featureId: feature.id}})
     }
     const overlayOff = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'none';
@@ -16,10 +20,14 @@ const FeatureOverlay = ({feature, project}) => {
     return (
         <div className="overlay">
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" onSubmit={editFeature} style={{position: 'relative'}}>
                 <input type="text" value={newFeature}
-                    onChange={(e) => setFeature(e.target.value)} required style={{fontSize: '1.4em', marginBottom: '1vh'}}/>
+                    onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '9%', fontSize: '1.4em'}}/>
                 <input type="submit" value="edit feature"/>
+            </form>
+            <form action="" onSubmit={handleDelete}>
+                <hr className="overlayHr"/>
+                <input type="submit" value="delete feature"/>
             </form>
         </div>
     );

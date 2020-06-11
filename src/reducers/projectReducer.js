@@ -37,6 +37,18 @@ export const projectReducer = (state, action) => {
                     return project
                 }
             })
+        case 'DELETE_FEATURE':
+            return state.map(project => {
+                if(project.id === action.deleteFeature.projectId) {
+                    return project = {
+                        title: project.title,
+                        features: project.features.filter(feature => feature.id !== action.deleteFeature.featureId),
+                        id: project.id
+                    }
+                } else {
+                    return project
+                }
+            })
         case 'EDIT_FEATURE':
             return state.map(project => {
                 if(project.id === action.editFeature.projectId) {
