@@ -10,6 +10,18 @@ export const projectReducer = (state, action) => {
             }]
         case 'DELETE_PROJECT':
             return state.filter(project => project.id !== action.id)
+        case 'EDIT_PROJECT':
+            return state.map(project => {
+                if(project.id === action.editProject.id) {
+                    return project = {
+                        title: action.editProject.title,
+                        features: project.features,
+                        id: project.id
+                    }
+                } else {
+                    return project
+                }
+            })
         case 'ADD_FEATURE':
             return state.map(project => {
                 if(project.id === action.addFeature.projectId) {
@@ -36,7 +48,8 @@ export const projectReducer = (state, action) => {
                              } else {
                                  return feature
                              }
-                         })
+                         }),
+                         id: project.id
                      }
                 } else {
                     return project

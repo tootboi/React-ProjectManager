@@ -10,8 +10,10 @@ const ProjectDetails = ({project}) => {
         // this line adds focus text input field of feature form. There is def a better way to do this.
         document.getElementById('featureForm'+project.id).children[0].children[2].children[0].focus();
     }
-    const deleteProject = (e) => {
+    const projectOverlay = (e) => {
         document.getElementById('projectOverlay'+project.id).style.display = 'block';
+        // this line adds focus text input field of project overlay. There is def a better way to do this.
+        document.getElementById('projectOverlay'+project.id).children[0].children[1].children[0].focus();
     }
     return (
         <div className="projectDetail">
@@ -25,7 +27,7 @@ const ProjectDetails = ({project}) => {
             </div>
             <div className='project'>
                 <div className="projectContainer">
-                    <div className='projectTitle' onClick={deleteProject}>{project.title}</div>
+                    <div className='projectTitle' onClick={projectOverlay}>{project.title}</div>
                     <div className='addFeature' onClick={addFeature}>
                         &oplus; <br/> add a feature
                     </div>
