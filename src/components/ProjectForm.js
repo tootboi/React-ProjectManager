@@ -9,7 +9,7 @@ const ProjectForm = () => {
         e.preventDefault();
         dispatch({type: 'ADD_PROJECT', title: project});
         setProject('');
-        document.getElementById('projectForm').style.display = 'none';
+        overlayOff();
     }
     const overlayOff = (e) => {
         document.getElementById('projectForm').style.display = 'none';

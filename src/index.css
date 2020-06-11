@@ -33,7 +33,6 @@ body {
 
 .feature {
   white-space: normal;
-  display: inline-block;
   margin: 1vh;
   background-color: #f8f8f8;
   height: 23vh;
@@ -41,12 +40,13 @@ body {
   border-radius: 10px;
   overflow-wrap: break-word;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .featureContainer {
   height: 100%;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 }
 
 .featureContainer > div{
