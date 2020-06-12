@@ -34,10 +34,8 @@ body {
 .feature {
   white-space: normal;
   margin: 1vh;
-  background-color: #f8f8f8;
   height: 23vh;
   width: 17vh;
-  border-radius: 10px;
   overflow-wrap: break-word;
   display: inline-flex;
 }
@@ -45,6 +43,8 @@ body {
 .featureContainer {
   height: 100%;
   width: 100%;
+  background-color: #f8f8f8;
+  border-radius: 10px;
   text-align: center;
   cursor: pointer;
 }
@@ -96,6 +96,11 @@ div.project {
   cursor: pointer;
 }
 
+.overlayContainer {
+  /* to get overlay to display above element with opacity lower than 1 */
+  z-index: 1;
+}
+
 .overlayContainer > div{
   position: fixed;
   display: none;
@@ -108,7 +113,7 @@ div.project {
   background-color: rgba(32, 32, 32, 0.3);
 }
 
-.overlay {
+div.overlay {
   height: 80vh;
   width: 60vw;
   background-color: #f8f8f8;
@@ -170,4 +175,8 @@ input[type='submit']:focus {
 .overlayHr {
   border: 0;
   border-bottom: 2px solid #64bdba;
+}
+
+.done {
+  opacity: .5;
 }

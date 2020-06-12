@@ -14,7 +14,7 @@ const FeatureDetails = ({feature, project}) => {
                     <FeatureOverlay feature={feature} project={project}/>
                 </div>
             </div>
-            <div className="featureContainer" onClick={overlayOn}>
+            <div className="featureContainer" id={feature.id} onClick={overlayOn}>
                 <div className="featureTitle">{feature.feature}</div>
                 <hr/>
             </div>
