@@ -99,6 +99,7 @@ div.project {
 .overlayContainer {
   /* to get overlay to display above element with opacity lower than 1 */
   z-index: 1;
+  position: relative;
 }
 
 .overlayContainer > div{

@@ -4,6 +4,7 @@ import { ProjectContext } from '../contexts/ProjectContext';
 const FeatureOverlay = ({feature, project}) => {
     const { dispatch } = useContext(ProjectContext);
     const [newFeature, setFeature] = useState(feature.feature);
+    const [isDone, setDone] = useState(false);
 
     const editFeature = (e) => {
         e.preventDefault();
@@ -12,6 +13,7 @@ const FeatureOverlay = ({feature, project}) => {
     }
     const handleDone = (e) => {
         e.preventDefault();
+        setDone(!isDone);
         document.getElementById(feature.id).classList.toggle('done');
         overlayOff();
     }
@@ -32,7 +34,7 @@ const FeatureOverlay = ({feature, project}) => {
             </form>
             <form action="" onSubmit={handleDone} style={{position: 'relative'}}>
                 <hr className="overlayHr"/>
-                <input type="submit" value="finished"/>
+                <input type="submit" value={isDone ? 'actually, not finished' : 'finished'}/>
             </form>
             <form action="" onSubmit={handleDelete}>
                 <hr className="overlayHr"/>
