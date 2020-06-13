@@ -11,6 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6vh;
 }
 
 .projectList {
@@ -87,6 +88,13 @@ div.project {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .025em #f8f8f8;
   cursor: pointer;
+}
+
+.featureCounter {
+  position: relative;
+  font-style: normal;
+  font-size: 1em;
+  color: #f8f8f8;
 }
 
 .addFeature {

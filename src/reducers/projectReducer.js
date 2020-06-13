@@ -6,6 +6,7 @@ export const projectReducer = (state, action) => {
             return [...state, {
                 title: action.title,
                 features: [],
+                done: 0,
                 id: uuidv1()
             }]
         case 'DELETE_PROJECT':
@@ -16,6 +17,7 @@ export const projectReducer = (state, action) => {
                     return project = {
                         title: action.editProject.title,
                         features: project.features,
+                        done: project.done,
                         id: project.id
                     }
                 } else {
@@ -31,6 +33,7 @@ export const projectReducer = (state, action) => {
                             feature: action.addFeature.feature,
                             id: uuidv1()
                         }],
+                        done: project.done,
                         id: project.id
                     }
                 } else {
@@ -43,6 +46,7 @@ export const projectReducer = (state, action) => {
                     return project = {
                         title: project.title,
                         features: project.features.filter(feature => feature.id !== action.deleteFeature.featureId),
+                        done: project.done,
                         id: project.id
                     }
                 } else {
@@ -61,8 +65,35 @@ export const projectReducer = (state, action) => {
                                  return feature
                              }
                          }),
+                         done: project.done,
                          id: project.id
                      }
+                } else {
+                    return project
+                }
+            })
+        case 'INCREMENT_DONE':
+            return state.map(project => {
+                if(project.id === action.id) {
+                    return project = {
+                        title: project.title,
+                        features: project.features,
+                        done: project.done + 1,
+                        id: project.id
+                    }
+                } else {
+                    return project
+                }
+            })
+        case 'DECREMENT_DONE':
+            return state.map(project => {
+                if(project.id === action.id) {
+                    return project = {
+                        title: project.title,
+                        features: project.features,
+                        done: project.done - 1,
+                        id: project.id
+                    }
                 } else {
                     return project
                 }

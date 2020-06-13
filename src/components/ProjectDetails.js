@@ -27,13 +27,16 @@ const ProjectDetails = ({project}) => {
             </div>
             <div className='project'>
                 <div className="projectContainer">
+                    <div className='featureCounter'>
+                        {project.done}/{project.features.length} done
+                    </div>
                     <div className='projectTitle' onClick={projectOverlay}>{project.title}</div>
                     <div className='addFeature' onClick={addFeature}>
                         &oplus; <br/> add a feature
                     </div>
                 </div>
             </div>
-            <div className="featureList">
+            <div className="featureList" id={'feature'+project.id}>
                 {project.features.map(feature => {
                         return (<FeatureDetails feature={feature} project={project} key={feature.id} />)
                     })}

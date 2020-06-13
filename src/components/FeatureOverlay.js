@@ -15,11 +15,13 @@ const FeatureOverlay = ({feature, project}) => {
         e.preventDefault();
         setDone(!isDone);
         document.getElementById(feature.id).classList.toggle('done');
+        isDone ? dispatch({type: 'DECREMENT_DONE', id: project.id}) : dispatch({type: 'INCREMENT_DONE', id: project.id});
         overlayOff();
     }
     const handleDelete = (e) => {
         e.preventDefault();
         dispatch({type: 'DELETE_FEATURE', deleteFeature: {projectId: project.id, featureId: feature.id}})
+        if(isDone) dispatch({type: 'DECREMENT_DONE', id: project.id});
     }
     const overlayOff = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'none';

@@ -16,14 +16,14 @@ const ProjectContextProvider = (props) => {
             {feature: 'feature8', id: 'unique1-8'},
             {feature: 'feature9', id: 'unique1-9'},
             {feature: 'feature10', id: 'unique1-10'},
-        ], id: 'unique1'},
+        ], done: 0, id: 'unique1'},
         {title: 'test project2', features: [
             {feature: 'feature1', id: 'unique2-1'}
-        ], id: 'unique2'},
+        ], done: 0, id: 'unique2'},
         {title: 'project manager', features: [
             {feature: 'number of features and percentage done', id: 'unique3-1'},
             {feature: 'overlay for editing and adding', id: 'unique3-2'},
-        ], id: 'unique3'},
+        ], done: 0, id: 'unique3'},
     ]);
     return (
         <ProjectContext.Provider value={{projects, dispatch}}>
