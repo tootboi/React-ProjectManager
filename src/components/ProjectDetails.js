@@ -29,7 +29,7 @@ const ProjectDetails = ({project}) => {
             <div className='project'>
                 <div className="projectContainer">
                     <div className='featureCounter'>
-                        {project.done}/{project.features.length} done
+                        {project.totalDone}/{project.features.length} done
                     </div>
                     <div className='projectTitle' onClick={projectOverlay}>{project.title}</div>
                     <div className='addFeature' onClick={addFeature}>
