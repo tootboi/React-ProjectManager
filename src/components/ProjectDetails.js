@@ -3,6 +3,7 @@ import { ProjectContext } from '../contexts/ProjectContext';
 import FeatureDetails from './FeatureDetails';
 import FeatureForm from './FeatureForm';
 import ProjectOverlay from './ProjectOverlay';
+import { dragscroll } from 'dragscroll';
 
 const ProjectDetails = ({project}) => {
     const addFeature = (e) => {
@@ -36,7 +37,7 @@ const ProjectDetails = ({project}) => {
                     </div>
                 </div>
             </div>
-            <div className="featureList" id={'feature'+project.id}>
+            <div className="featureList dragscroll" id={'feature'+project.id}>
                 {project.features.map(feature => {
                         return (<FeatureDetails feature={feature} project={project} key={feature.id} />)
                     })}
