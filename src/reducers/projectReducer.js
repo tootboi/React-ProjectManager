@@ -6,7 +6,8 @@ export const projectReducer = (state, action) => {
             return [...state, {
                 title: action.title,
                 features: [],
-                done: 0,
+                totalDone: 0,
+                isDone: [],
                 id: uuidv1()
             }]
         case 'DELETE_PROJECT':
@@ -17,7 +18,8 @@ export const projectReducer = (state, action) => {
                     return project = {
                         title: action.editProject.title,
                         features: project.features,
-                        done: project.done,
+                        totalDone: project.totalDone,
+                        isDone: project.isDone,
                         id: project.id
                     }
                 } else {
@@ -33,7 +35,8 @@ export const projectReducer = (state, action) => {
                             feature: action.addFeature.feature,
                             id: uuidv1()
                         }],
-                        done: project.done,
+                        totalDone: project.totalDone,
+                        isDone: project.isDone,
                         id: project.id
                     }
                 } else {
@@ -46,7 +49,8 @@ export const projectReducer = (state, action) => {
                     return project = {
                         title: project.title,
                         features: project.features.filter(feature => feature.id !== action.deleteFeature.featureId),
-                        done: project.done,
+                        totalDone: project.totalDone,
+                        isDone: project.isDone,
                         id: project.id
                     }
                 } else {
@@ -65,7 +69,8 @@ export const projectReducer = (state, action) => {
                                  return feature
                              }
                          }),
-                         done: project.done,
+                         totalDone: project.totalDone,
+                         isDone: project.isDone,
                          id: project.id
                      }
                 } else {
@@ -74,11 +79,12 @@ export const projectReducer = (state, action) => {
             })
         case 'INCREMENT_DONE':
             return state.map(project => {
-                if(project.id === action.id) {
+                if(project.id === action.ids.projectId) {
                     return project = {
                         title: project.title,
                         features: project.features,
-                        done: project.done + 1,
+                        totalDone: project.totalDone + 1,
+                        isDone: [...project.isDone, action.ids.featureId],
                         id: project.id
                     }
                 } else {
@@ -87,11 +93,12 @@ export const projectReducer = (state, action) => {
             })
         case 'DECREMENT_DONE':
             return state.map(project => {
-                if(project.id === action.id) {
+                if(project.id === action.ids.projectId) {
                     return project = {
                         title: project.title,
                         features: project.features,
-                        done: project.done - 1,
+                        totalDone: project.totalDone - 1,
+                        isDone: project.isDone.filter(id => id !== action.ids.featureId),
                         id: project.id
                     }
                 } else {
