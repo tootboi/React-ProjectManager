@@ -13,18 +13,25 @@ const ProjectList = () => {
     }
     return projects.length ? (
         <div className="projectList">
-                <div className="overlayContainer">
-                    <div id='projectForm'>
-                        <ProjectForm/>
-                    </div>
+            <div className="overlayContainer">
+                <div id='projectForm'>
+                    <ProjectForm/>
                 </div>
-                {projects.map(project => {
-                    return (<ProjectDetails project={project} key={project.id}/>)
-                })}
-                <div className="addProject" onClick={addProject}>&oplus; add a new project</div>
+            </div>
+            {projects.map(project => {
+                return (<ProjectDetails project={project} key={project.id}/>)
+            })}
+            <div className="addProject" onClick={addProject}>&oplus; add a new project</div>
         </div>
     ) : (
-        <div className="addProject" onClick={addProject}>&oplus; add a new project</div>
+        <div>
+            <div className="overlayContainer">
+                <div id='projectForm'>
+                    <ProjectForm/>
+                </div>
+            </div>
+            <div className="addProject" onClick={addProject}>&oplus; add a new project</div>
+        </div>
     );
 }
  
