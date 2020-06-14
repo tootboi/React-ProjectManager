@@ -2,6 +2,13 @@ import React, { useContext } from 'react';
 import FeatureOverlay from './FeatureOverlay';
 
 const FeatureDetails = ({feature, project}) => {
+    const isDone = () => {
+        if(project.isDone.includes(feature.id)) {
+            return "featureContainer done";
+        } else {
+            return "featureContainer";
+        }
+    }
     const overlayOn = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'block';
         // this line adds focus text input field of project overlay. There is def a better way to do this.
@@ -14,7 +21,7 @@ const FeatureDetails = ({feature, project}) => {
                     <FeatureOverlay feature={feature} project={project}/>
                 </div>
             </div>
-            <div className="featureContainer" id={feature.id} onClick={overlayOn}>
+            <div className={isDone()} id={feature.id} onClick={overlayOn}>
                 <div className="featureTitle">{feature.feature}</div>
                 <hr/>
             </div>

@@ -4,7 +4,7 @@ import { ProjectContext } from '../contexts/ProjectContext';
 const FeatureOverlay = ({feature, project}) => {
     const { dispatch } = useContext(ProjectContext);
     const [newFeature, setFeature] = useState(feature.feature);
-    const [isDone, setDone] = useState(false);
+    const [isDone, setDone] = useState(project.isDone.includes(feature.id));
 
     const editFeature = (e) => {
         e.preventDefault();
@@ -15,13 +15,13 @@ const FeatureOverlay = ({feature, project}) => {
         e.preventDefault();
         setDone(!isDone);
         document.getElementById(feature.id).classList.toggle('done');
-        isDone ? dispatch({type: 'DECREMENT_DONE', id: project.id}) : dispatch({type: 'INCREMENT_DONE', id: project.id});
+        isDone ? dispatch({type: 'DECREMENT_DONE', ids: {projectId: project.id, featureId: feature.id}}) : dispatch({type: 'INCREMENT_DONE', ids: {projectId: project.id, featureId: feature.id}});
         overlayOff();
     }
     const handleDelete = (e) => {
         e.preventDefault();
         dispatch({type: 'DELETE_FEATURE', deleteFeature: {projectId: project.id, featureId: feature.id}})
-        if(isDone) dispatch({type: 'DECREMENT_DONE', id: project.id});
+        if(isDone) dispatch({type: 'DECREMENT_DONE', ids: {projectId: project.id, featureId: feature.id}});
     }
     const overlayOff = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'none';
