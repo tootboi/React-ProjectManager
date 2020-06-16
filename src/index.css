@@ -123,8 +123,8 @@ div.project {
 }
 
 div.overlay {
-  height: 80vh;
-  width: 60vw;
+  height: 80%;
+  width: 60%;
   background-color: #f8f8f8;
   margin: 10vh 20vw;
   border-radius: 15px;
