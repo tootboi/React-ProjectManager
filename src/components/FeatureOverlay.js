@@ -35,8 +35,8 @@ const FeatureOverlay = ({feature, project}) => {
                 />
             </form>
             <form action="" onSubmit={editFeature} style={{position: 'relative'}}>
-                <input type="text" value={newFeature}
-                    onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '3%', fontSize: '1.4em'}}/>
+                <textarea name="featureArea" id="" cols="30" rows="10" value={newFeature} onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '3%', fontSize: '1em'}}></textarea>
+                <hr className="overlayHr"/>
                 <input type="submit" value="edit feature"/>
             </form>  
             <form action="" onSubmit={handleDelete}>

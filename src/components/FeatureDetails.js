@@ -11,8 +11,11 @@ const FeatureDetails = ({feature, project}) => {
     }
     const overlayOn = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'block';
-        // this line adds focus text input field of feature overlay. There is def a better way to do this.
-        document.getElementById('featureOverlay'+feature.id).children[0].children[2].children[0].focus();
+        //these lines focus the cursor to the end of the textarea.
+        const textarea = document.getElementById('featureOverlay'+feature.id).children[0].children[2].children[0];
+        textarea.value = '';
+        textarea.value = feature.feature;
+        textarea.focus();
     }
     return (
         <div className="feature">

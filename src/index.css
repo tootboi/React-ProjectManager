@@ -202,3 +202,16 @@ input[type='submit']:focus {
   margin-bottom: 3%;
   margin-top: 1%;
 }
+
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  resize: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 1%;
+  border: 0;
+  width: 100%;
+  color: #74bcaf;
+}
