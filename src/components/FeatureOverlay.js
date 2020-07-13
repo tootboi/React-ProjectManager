@@ -29,15 +29,16 @@ const FeatureOverlay = ({feature, project}) => {
     return (
         <div className="overlay" style={{opacity: '1'}}>
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
+            <form className="finishBtn" action="" onSubmit={handleDone} >
+                <input type="submit" value={isDone ? 'actually, not finished' : 'finished'} 
+                    style={isDone ? {backgroundColor: '#74bcaf', color: '#f8f8f8'}:{color: '#74bcaf'}}
+                />
+            </form>
             <form action="" onSubmit={editFeature} style={{position: 'relative'}}>
                 <input type="text" value={newFeature}
-                    onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '9%', fontSize: '1.4em'}}/>
+                    onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '3%', fontSize: '1.4em'}}/>
                 <input type="submit" value="edit feature"/>
-            </form>
-            <form action="" onSubmit={handleDone} style={{position: 'relative'}}>
-                <hr className="overlayHr"/>
-                <input type="submit" value={isDone ? 'actually, not finished' : 'finished'}/>
-            </form>
+            </form>  
             <form action="" onSubmit={handleDelete}>
                 <hr className="overlayHr"/>
                 <input type="submit" value="delete feature"/>

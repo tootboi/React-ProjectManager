@@ -189,3 +189,16 @@ input[type='submit']:focus {
 .done {
   opacity: .5;
 }
+
+.finishBtn {
+  position: relative;
+  top: 1%;
+  bottom: 3%;
+  width: min-content;
+  margin: auto;
+  border: 2px #74bcaf solid;
+  border-radius: 5px;
+  background-color: transparent;
+  margin-bottom: 3%;
+  margin-top: 1%;
+}
