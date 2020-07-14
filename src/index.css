@@ -26,6 +26,8 @@ body {
   white-space: nowrap;
   overflow-x: scroll;
   scrollbar-width: none;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 .featureList::-webkit-scrollbar {
@@ -33,9 +35,11 @@ body {
 }
 
 .feature {
+  position: relative;
   white-space: normal;
-  margin: 1vh;
-  height: 23vh;
+  margin: 0 1vh;
+  top: 5%;
+  height: 90%;
   width: 17vh;
   overflow-wrap: break-word;
   display: inline-flex;
@@ -95,6 +99,7 @@ div.project {
   font-style: normal;
   font-size: 1em;
   color: #f8f8f8;
+  cursor: pointer;
 }
 
 .addFeature {
@@ -222,4 +227,13 @@ textarea:focus {
 .BtnContainer > form {
   float: left;
   width: 48%;
+}
+
+.expanded {
+  height: 80vh;
+  margin-bottom: 10vh;
+}
+
+.largerFeature {
+  width: 30vh;
 }

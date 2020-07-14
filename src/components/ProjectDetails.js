@@ -6,6 +6,17 @@ import ProjectOverlay from './ProjectOverlay';
 import { dragscroll } from 'dragscroll';
 
 const ProjectDetails = ({project}) => {
+    const expandProject = (e) => {
+        if(project.features.length > 0) {
+            document.getElementById('projectDetail'+project.id).classList.toggle('expanded');
+            const featureList = [...document.getElementById('feature'+project.id).children];
+            console.log(featureList);
+            featureList.forEach(feature => {
+                feature.classList.toggle('largerFeature');
+            })
+        }
+        
+    }
     const addFeature = (e) => {
         document.getElementById('featureForm'+project.id).style.display = 'block';
         // this line adds focus text input field of feature form. There is def a better way to do this.
@@ -17,7 +28,7 @@ const ProjectDetails = ({project}) => {
         document.getElementById('projectOverlay'+project.id).children[0].children[1].focus();
     }
     return (
-        <div className="projectDetail">
+        <div className="projectDetail" id={'projectDetail'+project.id}>
             <div className="overlayContainer">
                 <div id={'featureForm'+project.id}>
                     <FeatureForm project={project}/>
@@ -28,7 +39,7 @@ const ProjectDetails = ({project}) => {
             </div>
             <div className='project'>
                 <div className="projectContainer">
-                    <div className='featureCounter'>
+                    <div className='featureCounter' onClick={expandProject}>
                         {project.totalDone}/{project.features.length} done
                     </div>
                     <div className='projectTitle' onClick={projectOverlay}>{project.title}</div>
