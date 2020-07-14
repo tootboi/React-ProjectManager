@@ -20,15 +20,16 @@ const ProjectOverlay = ({project}) => {
     return (
         <div className="overlay">
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
-            <form action="" onSubmit={handleEdit}  style={{position: 'relative'}}>
-                <input type="text" className='projectTitle' value={title}
-                    onChange={(e) => setTitle(e.target.value)} required style={{marginTop: '3.6%', fontSize: '2em', textAlign: 'center', color: '#37bfd9', WebkitTextFillColor: 'transparent', WebkitTextStroke: '.04em #37bfd9', cursor: 'auto'}}/>
-                <input type="submit" value="edit"/>
-            </form>
-            <form action="" onSubmit={handleSubmit}>
-                <hr className="overlayHr"/>
-                <input type="submit" value="delete project"/>
-            </form>
+            <input type="text" className='projectTitle' value={title}
+                        onChange={(e) => setTitle(e.target.value)} required style={{marginTop: '3.6%', fontSize: '2em', textAlign: 'center', color: '#37bfd9', WebkitTextFillColor: 'transparent', WebkitTextStroke: '.04em #37bfd9'}}/>
+            <div className="BtnContainer">
+                <form action="" onSubmit={handleSubmit}>
+                    <input type="submit" value="delete project" style={{backgroundColor: '#5bbdc0', color: '#f8f8f8', borderRadius: '8px'}}/>
+                </form>
+                <form action="" onSubmit={handleEdit}  style={{position: 'relative'}}>
+                    <input type="submit" value="edit" style={{color: '#5bbdc0'}}/>
+                </form>
+            </div>
         </div>
     );
 }

@@ -145,19 +145,11 @@ div.overlay {
   -webkit-text-stroke: .04em #37bfd9;
 }
 
-form {
-  position: absolute;
-  width: 100%;
-  bottom: 1vh;
-  margin: auto;
-}
-
 input[type='text'] {
   width: 96%;
   padding: .3% 2%;
   margin: auto;
   border-width: 0;
-  border-bottom: 2px solid #64bdba;
   background-color: transparent;
   font-size: 1.5em;
   color: #64bdba;
@@ -214,4 +206,20 @@ textarea {
   border: 0;
   width: 100%;
   color: #74bcaf;
+}
+
+textarea:focus {
+  outline-width: 0;
+}
+
+.BtnContainer {
+  position: absolute;
+  bottom: 1%;
+  width: 100%;
+  margin: 0 2%
+}
+
+.BtnContainer > form {
+  float: left;
+  width: 48%;
 }

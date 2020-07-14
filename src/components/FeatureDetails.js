@@ -12,7 +12,7 @@ const FeatureDetails = ({feature, project}) => {
     const overlayOn = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'block';
         //these lines focus the cursor to the end of the textarea.
-        const textarea = document.getElementById('featureOverlay'+feature.id).children[0].children[2].children[0];
+        const textarea = document.getElementById('featureOverlay'+feature.id).children[0].children[2];
         textarea.value = '';
         textarea.value = feature.feature;
         textarea.focus();

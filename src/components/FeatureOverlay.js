@@ -34,15 +34,15 @@ const FeatureOverlay = ({feature, project}) => {
                     style={isDone ? {backgroundColor: '#74bcaf', color: '#f8f8f8'}:{color: '#74bcaf'}}
                 />
             </form>
-            <form action="" onSubmit={editFeature} style={{position: 'relative'}}>
-                <textarea name="featureArea" id="" cols="30" rows="10" value={newFeature} onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '3%', fontSize: '1em'}}></textarea>
-                <hr className="overlayHr"/>
-                <input type="submit" value="edit feature"/>
-            </form>  
-            <form action="" onSubmit={handleDelete}>
-                <hr className="overlayHr"/>
-                <input type="submit" value="delete feature"/>
-            </form>
+            <textarea name="featureArea" id="" cols="30" rows="10" value={newFeature} onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '3%', fontSize: '1em'}}></textarea>
+            <div className='BtnContainer'>
+                <form action="" onSubmit={handleDelete}>
+                    <input type="submit" value="delete feature" style={{backgroundColor: '#74bcaf', color: '#f8f8f8', borderRadius: '8px'}}/>
+                </form>
+                <form action="" onSubmit={editFeature}>
+                    <input type="submit" value="edit feature"/>
+                </form>              
+            </div>
         </div>
     );
 }

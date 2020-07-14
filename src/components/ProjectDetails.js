@@ -14,7 +14,7 @@ const ProjectDetails = ({project}) => {
     const projectOverlay = (e) => {
         document.getElementById('projectOverlay'+project.id).style.display = 'block';
         // this line adds focus text input field of project overlay. There is def a better way to do this.
-        document.getElementById('projectOverlay'+project.id).children[0].children[1].children[0].focus();
+        document.getElementById('projectOverlay'+project.id).children[0].children[1].focus();
     }
     return (
         <div className="projectDetail">
