@@ -20,14 +20,18 @@ body {
 
 .projectDetail {
   height: 25vh;
+  width: 95vw;
+  display: inline-flex;
 }
 
 .featureList {
-  white-space: nowrap;
-  overflow-x: scroll;
+  float: left;
   scrollbar-width: none;
-  height: 100%;
-  overflow-y: hidden;
+  width: 25vh;
+  height: calc(96vw - 26vh);
+  overflow-y: scroll;
+  transform: rotate(-90deg) translateY(-25vh);
+  transform-origin: top right;
 }
 
 .featureList::-webkit-scrollbar {
@@ -36,13 +40,13 @@ body {
 
 .feature {
   position: relative;
-  white-space: normal;
-  margin: 0 1vh;
-  top: 5%;
-  height: 90%;
   width: 17vh;
+  height: 24vh;
   overflow-wrap: break-word;
-  display: inline-flex;
+  display: flex;
+  transform: rotate(90deg) translateY(-25vh);
+  transform-origin: top left;
+  margin-bottom: -5vh;
 }
 
 .featureContainer {
@@ -231,9 +235,20 @@ textarea:focus {
 
 .expanded {
   height: 80vh;
-  margin-bottom: 10vh;
+  margin: 10vh 0;
 }
 
 .largerFeature {
+  position: relative;
+  right: 2vh;
+  margin-bottom: -46vh;
   width: 30vh;
+  height: 78vh;
+  transform: rotate(90deg) translateY(-80vh);
+}
+
+.expandList {
+  width: 78vh;
+  position: absolute;
+  left: -25vh;
 }

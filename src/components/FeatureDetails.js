@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import FeatureOverlay from './FeatureOverlay';
 
 const FeatureDetails = ({feature, project}) => {
     const isDone = () => {
@@ -19,11 +18,6 @@ const FeatureDetails = ({feature, project}) => {
     }
     return (
         <div className="feature">
-            <div className="overlayContainer">
-                <div id={'featureOverlay'+feature.id}>
-                    <FeatureOverlay feature={feature} project={project}/>
-                </div>
-            </div>
             <div className={isDone()} id={feature.id} onClick={overlayOn}>
                 <div className="featureTitle">{feature.feature}</div>
                 <hr/>
