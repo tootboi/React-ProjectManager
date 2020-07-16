@@ -5,9 +5,11 @@ export const projectReducer = (state, action) => {
         case 'ADD_PROJECT':
             return [...state, {
                 title: action.title,
-                features: [],
-                totalDone: 0,
-                isDone: [],
+                tasks: {},
+                features: {},
+                featureOrder: [],
+                featuresDone: 0,
+                doneFeatures: [],
                 id: uuidv1()
             }]
         case 'DELETE_PROJECT':
@@ -17,9 +19,11 @@ export const projectReducer = (state, action) => {
                 if(project.id === action.editProject.id) {
                     return project = {
                         title: action.editProject.title,
+                        tasks: project.tasks,
                         features: project.features,
-                        totalDone: project.totalDone,
-                        isDone: project.isDone,
+                        featureOrder: project.featureOrder,
+                        featuresDone: project.featuresDone,
+                        doneFeatures: project.doneFeatures,
                         id: project.id
                     }
                 } else {
@@ -27,16 +31,22 @@ export const projectReducer = (state, action) => {
                 }
             })
         case 'ADD_FEATURE':
+            const featureId = uuidv1();
             return state.map(project => {
                 if(project.id === action.addFeature.projectId) {
                     return project = {
                         title: project.title,
-                        features: [...project.features, {
-                            feature: action.addFeature.feature,
-                            id: uuidv1()
-                        }],
-                        totalDone: project.totalDone,
-                        isDone: project.isDone,
+                        tasks: project.tasks,
+                        features: {...project.features, [featureId]: {
+                            id: featureId,
+                            title: action.addFeature.featureTitle,
+                            taskIds: [],
+                            tasksDone: 0,
+                            doneTasks: [],
+                        }},
+                        featureOrder: [...project.featureOrder, featureId],
+                        featuresDone: project.featuresDone,
+                        doneFeatures: project.doneFeatures,
                         id: project.id
                     }
                 } else {
@@ -46,13 +56,16 @@ export const projectReducer = (state, action) => {
         case 'DELETE_FEATURE':
             return state.map(project => {
                 if(project.id === action.deleteFeature.projectId) {
+                    delete project.features[action.deleteFeature.featureId];
                     return project = {
                         title: project.title,
-                        features: project.features.filter(feature => feature.id !== action.deleteFeature.featureId),
-                        totalDone: project.totalDone,
-                        isDone: project.isDone,
+                        tasks: project.tasks,
+                        features: project.features,
+                        featureOrder: project.featureOrder.filter(id => id !== action.deleteFeature.featureId),
+                        featuresDone: project.featuresDone,
+                        doneFeatures: project.doneFeatures,
                         id: project.id
-                    }
+                    };
                 } else {
                     return project
                 }
@@ -60,19 +73,8 @@ export const projectReducer = (state, action) => {
         case 'EDIT_FEATURE':
             return state.map(project => {
                 if(project.id === action.editFeature.projectId) {
-                     return project = {
-                         title: project.title,
-                         features: project.features.map(feature => {
-                             if(feature.id === action.editFeature.featureId) {
-                                 return feature = {feature: action.editFeature.feature, id: feature.id}
-                             } else {
-                                 return feature
-                             }
-                         }),
-                         totalDone: project.totalDone,
-                         isDone: project.isDone,
-                         id: project.id
-                     }
+                    project.features[action.editFeature.featureId].title = action.editFeature.featureTitle;
+                    return project;
                 } else {
                     return project
                 }
@@ -83,8 +85,9 @@ export const projectReducer = (state, action) => {
                     return project = {
                         title: project.title,
                         features: project.features,
-                        totalDone: project.totalDone + 1,
-                        isDone: [...project.isDone, action.ids.featureId],
+                        featureOrder: project.featureOrder,
+                        featuresDone: project.featuresDone + 1,
+                        doneFeatures: [...project.doneFeatures, action.ids.featureId],
                         id: project.id
                     }
                 } else {
@@ -97,8 +100,9 @@ export const projectReducer = (state, action) => {
                     return project = {
                         title: project.title,
                         features: project.features,
-                        totalDone: project.totalDone - 1,
-                        isDone: project.isDone.filter(id => id !== action.ids.featureId),
+                        featureOrder: project.featureOrder,
+                        featuresDone: project.featuresDone - 1,
+                        doneFeatures: project.doneFeatures.filter(id => id !== action.ids.featureId),
                         id: project.id
                     }
                 } else {
