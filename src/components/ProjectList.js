@@ -19,7 +19,7 @@ const ProjectList = () => {
                 </div>
             </div>
             {projects.map(project => {
-                return (<ProjectDetails project={project} key={project.id}/>)
+                return (<ProjectDetails OgProject={project} key={project.id}/>)
             })}
             <div className="addProject" onClick={addProject}>&oplus; add a new project</div>
         </div>

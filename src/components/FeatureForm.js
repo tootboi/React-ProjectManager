@@ -7,7 +7,7 @@ const FeatureForm = ({project}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({type: 'ADD_FEATURE', addFeature: {feature: feature, projectId: project.id}});
+        dispatch({type: 'ADD_FEATURE', addFeature: {featureTitle: feature, projectId: project.id}});
         setFeature('');
     }
     const overlayOff = (e) => {

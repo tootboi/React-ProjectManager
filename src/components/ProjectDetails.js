@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
 import FeatureDetails from './FeatureDetails';
 import FeatureForm from './FeatureForm';
 import ProjectOverlay from './ProjectOverlay';
 import FeatureOverlay from './FeatureOverlay';
+import { DragDropContext } from 'react-beautiful-dnd';
 
-const ProjectDetails = ({project}) => {
+const ProjectDetails = ({OgProject}) => {
+    const [project, setProject] = useState(OgProject);
+
     const expandProject = (e) => {
-        if(project.features.length > 0) {
+        if(project.featureOrder.length > 0) {
             document.getElementById('projectDetail'+project.id).classList.toggle('expanded');
             document.getElementById('feature'+project.id).classList.toggle('expandList');
             const featureList = [...document.getElementById('feature'+project.id).children];
-            console.log(featureList);
             featureList.forEach(feature => {
                 feature.classList.toggle('largerFeature');
             })
@@ -27,6 +29,35 @@ const ProjectDetails = ({project}) => {
         // this line adds focus text input field of project overlay. There is def a better way to do this.
         document.getElementById('projectOverlay'+project.id).children[0].children[1].focus();
     }
+    const onDragEnd = (result) => {
+        const {destination, source, draggableId} = result;
+        //cancel if there is no destination
+        if(!destination) {
+            return;
+        }
+        //check if item was dropped in same place
+        if(destination.droppableId === source.droppableId && destination.index === source.index) {
+            return;
+        }
+        //reorder
+        const feature = project.features[source.droppableId];
+            //create a new array rather than mutating original ones
+        const newTaskIds = Array.from(feature.taskIds);
+        newTaskIds.splice(source.index, 1);
+        newTaskIds.splice(destination.index, 0, draggableId);
+            //create newFeature using og feature
+        const newFeature = {...feature, taskIds: newTaskIds,};
+            //newProject
+        const newProject = {
+            ...project, 
+            features: {
+                ...project.features,
+                [newFeature.id]: newFeature,
+            },
+        }
+
+        setProject(newProject);
+    }
     return (
         <div className="projectDetail" id={'projectDetail'+project.id}>
             <div className="overlayContainer">
@@ -40,7 +71,7 @@ const ProjectDetails = ({project}) => {
             <div className='project'>
                 <div className="projectContainer">
                     <div className='featureCounter' onClick={expandProject}>
-                        {project.totalDone}/{project.features.length} done
+                        {project.featuresDone}/{project.featureOrder.length} done
                     </div>
                     <div className='projectTitle' onClick={projectOverlay}>{project.title}</div>
                     <div className='addFeature' onClick={addFeature}>
@@ -49,18 +80,20 @@ const ProjectDetails = ({project}) => {
                 </div>
             </div>
             <div className="overlayContainer">
-                {project.features.map(feature => {
-                    return (<div id={'featureOverlay'+feature.id}>
-                                <FeatureOverlay feature={feature} project={project}/>
+                {project.featureOrder.map(featureId => {
+                    return (<div id={'featureOverlay'+featureId} key={featureId}>
+                                <FeatureOverlay feature={project.features[featureId]} project={project}/>
                             </div>
                             );
                 })}
             </div>
-            <div className="featureList" id={'feature'+project.id}> 
-                {project.features.map(feature => {
-                    return (<FeatureDetails feature={feature} project={project} key={feature.id} />)
-                })}
-            </div>
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div className="featureList" id={'feature'+project.id}> 
+                    {project.featureOrder.map(featureId => {
+                        return (<FeatureDetails feature={project.features[featureId]} project={project} key={featureId} />)
+                    })}
+                </div>
+            </DragDropContext>
         </div>
     );
 }

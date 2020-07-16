@@ -3,12 +3,12 @@ import { ProjectContext } from '../contexts/ProjectContext';
 
 const FeatureOverlay = ({feature, project}) => {
     const { dispatch } = useContext(ProjectContext);
-    const [newFeature, setFeature] = useState(feature.feature);
-    const [isDone, setDone] = useState(project.isDone.includes(feature.id));
+    const [newFeature, setFeature] = useState(feature.title);
+    const [isDone, setDone] = useState(project.doneFeatures.includes(feature.id));
 
     const editFeature = (e) => {
         e.preventDefault();
-        dispatch({type: 'EDIT_FEATURE', editFeature: {feature: newFeature, featureId: feature.id, projectId: project.id}});
+        dispatch({type: 'EDIT_FEATURE', editFeature: {featureTitle: newFeature, featureId: feature.id, projectId: project.id}});
         overlayOff();
     }
     const handleDone = (e) => {
