@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskDetails from './TaskDetails';
 import { Droppable } from 'react-beautiful-dnd';
+import TaskForm from './TaskForm';
 
 const FeatureDetails = ({feature, project}) => {
     const isDone = () => {
@@ -23,16 +24,19 @@ const FeatureDetails = ({feature, project}) => {
             <div className={isDone()} id={feature.id}>
                 <div className="featureTitle" onClick={overlayOn}>{feature.title}</div>
                 <hr/>
-                <Droppable droppableId={feature.id}>
-                    {(provided) => (
-                        <div ref={provided.innerRef} {...provided.droppableProps}>
-                            {feature.taskIds.map((taskId, index) => {
-                                return(<TaskDetails key={taskId} task={project.tasks[taskId]} index={index} />);
-                            })}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
+                <div className='taskContainer' id={'task'+feature.id}>
+                    <Droppable droppableId={feature.id}>
+                        {(provided) => (
+                            <div ref={provided.innerRef} {...provided.droppableProps}>
+                                {feature.taskIds.map((taskId, index) => {
+                                    return(<TaskDetails key={taskId} task={project.tasks[taskId]} index={index} />);
+                                })}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                    <TaskForm feature={feature} project={project} />
+                </div>
             </div>
         </div>
     );

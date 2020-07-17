@@ -109,6 +109,18 @@ export const projectReducer = (state, action) => {
                     return project
                 }
             })
+        case 'ADD_TASK':
+            const newId = uuidv1();
+            return state.map(project => {
+                if(project.id === action.addTask.projectId) {
+                    console.log(newId)
+                    project.features[action.addTask.featureId].taskIds.push(newId);
+                    project.tasks[newId] = {id: newId, content: action.addTask.task}
+                    return project;
+                } else {
+                    return project
+                }
+            })
         case 'REORDER_TASK':
             return state.map(project => {
                 if(project.id === action.reorder.projectId) {
