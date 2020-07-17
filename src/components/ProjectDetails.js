@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
 import FeatureDetails from './FeatureDetails';
 import FeatureForm from './FeatureForm';
@@ -7,6 +7,7 @@ import FeatureOverlay from './FeatureOverlay';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 const ProjectDetails = ({OgProject}) => {
+    const { dispatch } = useContext(ProjectContext);
     const [project, setProject] = useState(OgProject);
 
     const expandProject = (e) => {
@@ -57,6 +58,8 @@ const ProjectDetails = ({OgProject}) => {
         }
 
         setProject(newProject);
+        //need a new reducer called to make changes to the localStorage. need the taskIds array reordered.
+        dispatch({type: 'REORDER_TASK', reorder: {projectId: project.id, featureId: feature.id, newTaskIds: newTaskIds}})
     }
     return (
         <div className="projectDetail" id={'projectDetail'+project.id}>

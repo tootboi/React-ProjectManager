@@ -109,6 +109,21 @@ export const projectReducer = (state, action) => {
                     return project
                 }
             })
+        case 'REORDER_TASK':
+            return state.map(project => {
+                if(project.id === action.reorder.projectId) {
+                    const newFeature = {...project.features[action.reorder.featureId], taskIds: action.reorder.newTaskIds};
+                    return project = {
+                        ...project,
+                        features: {
+                            ...project.features,
+                            [newFeature.id]: newFeature,
+                        }
+                    }
+                } else {
+                    return project
+                }
+            });
         default:
             return state
     }
