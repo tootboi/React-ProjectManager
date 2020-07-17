@@ -21,17 +21,13 @@ body {
 .projectDetail {
   height: 25vh;
   width: 95vw;
-  display: inline-flex;
 }
 
 .featureList {
-  float: left;
+  white-space: nowrap;
   scrollbar-width: none;
-  width: 25vh;
-  height: calc(96vw - 26vh);
-  overflow-y: scroll;
-  transform: rotate(-90deg) translateY(-25vh);
-  transform-origin: top right;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .featureList::-webkit-scrollbar {
@@ -39,14 +35,17 @@ body {
 }
 
 .feature {
+  white-space: normal;
   position: relative;
   width: 17vh;
-  height: 24vh;
+  height: 23vh;
   overflow-wrap: break-word;
-  display: flex;
-  transform: rotate(90deg) translateY(-25vh);
-  transform-origin: top left;
-  margin-bottom: -5vh;
+  display: inline-flex;
+  margin: 1vh;
+}
+
+.featureTitle {
+  cursor: pointer;
 }
 
 .featureContainer {
@@ -55,7 +54,6 @@ body {
   background-color: #f8f8f8;
   border-radius: 10px;
   text-align: center;
-  cursor: pointer;
 }
 
 .featureContainer > div{
@@ -240,15 +238,27 @@ textarea:focus {
 
 .largerFeature {
   position: relative;
-  right: 2vh;
-  margin-bottom: -46vh;
   width: 30vh;
   height: 78vh;
-  transform: rotate(90deg) translateY(-80vh);
 }
 
-.expandList {
-  width: 78vh;
+.tasks {
+  border: 2px solid black;
+  background-color: cornflowerblue;
+}
+
+.taskForm {
   position: absolute;
-  left: -25vh;
+  bottom: 0;
+  left: 0;
+  margin: 1vh;
+  border-bottom: 1px solid #64bdba;
+}
+
+.taskContainer {
+  display: none;
+}
+
+.unhide {
+  display: block;
 }

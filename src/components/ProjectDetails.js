@@ -18,6 +18,10 @@ const ProjectDetails = ({OgProject}) => {
             featureList.forEach(feature => {
                 feature.classList.toggle('largerFeature');
             })
+            const taskContainers = [...document.getElementsByClassName('taskContainer')];
+            taskContainers.forEach(tsakContainer => {
+                tsakContainer.classList.toggle('unhide');
+            })
         }
     }
     const addFeature = (e) => {
