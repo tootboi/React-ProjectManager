@@ -113,10 +113,22 @@ export const projectReducer = (state, action) => {
             const newId = uuidv1();
             return state.map(project => {
                 if(project.id === action.addTask.projectId) {
-                    console.log(newId)
                     project.features[action.addTask.featureId].taskIds.push(newId);
                     project.tasks[newId] = {id: newId, content: action.addTask.task}
                     return project;
+                } else {
+                    return project
+                }
+            })
+        case 'DELETE_TASK':
+            return state.map(project => {
+                if(project.id === action.ids.projectId) {
+                    delete project.tasks[action.ids.taskId];
+                    const taskIndex = project.features[action.ids.featureId].taskIds.indexOf(action.ids.taskId);
+                    if (taskIndex > -1) {
+                        project.features[action.ids.featureId].taskIds.splice(taskIndex, 1);
+                    }
+                    return project
                 } else {
                     return project
                 }

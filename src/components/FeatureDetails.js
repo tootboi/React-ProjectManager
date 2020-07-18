@@ -29,7 +29,7 @@ const FeatureDetails = ({feature, project}) => {
                         {(provided) => (
                             <div ref={provided.innerRef} {...provided.droppableProps}>
                                 {feature.taskIds.map((taskId, index) => {
-                                    return(<TaskDetails key={taskId} task={project.tasks[taskId]} index={index} />);
+                                    return(<TaskDetails key={taskId} feature={feature} project={project} task={project.tasks[taskId]} index={index} />);
                                 })}
                                 {provided.placeholder}
                             </div>
