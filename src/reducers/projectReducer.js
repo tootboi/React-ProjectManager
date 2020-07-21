@@ -133,6 +133,15 @@ export const projectReducer = (state, action) => {
                     return project
                 }
             })
+        case 'EDIT_TASK':
+            return state.map(project => {
+                if(project.id === action.editTask.projectId) {
+                    project.tasks[action.editTask.taskId].content = action.editTask.taskContent;
+                    return project
+                } else {
+                    return project
+                }
+            })
         case 'REORDER_TASK':
             return state.map(project => {
                 if(project.id === action.reorder.projectId) {
