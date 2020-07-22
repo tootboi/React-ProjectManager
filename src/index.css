@@ -272,6 +272,8 @@ textarea:focus {
   background-color: rgb(190, 190, 190);
   border-radius: 50%;
   margin-right: 8px;
+  position: absolute;
+  top: calc(.7em / 2);
 }
 
 .deleteBtn {
@@ -282,5 +284,6 @@ textarea:focus {
 
 .taskText {
   width: calc(100% - 1em - 8px - 4%);
+  margin-left: calc(.7em + 8px);
   font-size: .8em;
 }
