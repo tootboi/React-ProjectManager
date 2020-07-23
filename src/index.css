@@ -247,6 +247,7 @@ textarea:focus {
   background-color: #f8f8f8;
   text-align: left;
   position: relative;
+  margin-bottom: 3px;
 }
 
 .taskForm {
@@ -273,12 +274,13 @@ textarea:focus {
   border-radius: 50%;
   margin-right: 8px;
   position: absolute;
-  top: calc(.7em / 2);
+  top: calc(.4em / 2);
 }
 
 .deleteBtn {
   position: absolute;
   right: .5vh;
+  top: calc(-.5em / 2);
   cursor: pointer;
 }
 
