@@ -84,6 +84,7 @@ export const projectReducer = (state, action) => {
                 if(project.id === action.ids.projectId) {
                     return project = {
                         title: project.title,
+                        tasks: project.tasks,
                         features: project.features,
                         featureOrder: project.featureOrder,
                         featuresDone: project.featuresDone + 1,
@@ -99,6 +100,7 @@ export const projectReducer = (state, action) => {
                 if(project.id === action.ids.projectId) {
                     return project = {
                         title: project.title,
+                        tasks: project.tasks,
                         features: project.features,
                         featureOrder: project.featureOrder,
                         featuresDone: project.featuresDone - 1,
