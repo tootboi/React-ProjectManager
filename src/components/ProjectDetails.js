@@ -3,12 +3,12 @@ import { ProjectContext } from '../contexts/ProjectContext';
 import FeatureDetails from './FeatureDetails';
 import FeatureForm from './FeatureForm';
 import ProjectOverlay from './ProjectOverlay';
-import FeatureOverlay from './FeatureOverlay';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-const ProjectDetails = ({OgProject}) => {
+const ProjectDetails = ({project}) => {
     const { dispatch } = useContext(ProjectContext);
-    const [project, setProject] = useState(OgProject);
+    const [dragProject, setProject] = useState(project);
+    // console.log('project: ', project, '\n   drag: ', dragProject);
 
     const expandProject = (e) => {
         if(project.featureOrder.length > 0) {
@@ -35,13 +35,25 @@ const ProjectDetails = ({OgProject}) => {
         document.getElementById('projectOverlay'+project.id).children[0].children[1].focus();
     }
     const onDragEnd = (result) => {
-        const {destination, source, draggableId} = result;
+        const {destination, source, draggableId, type} = result;
         //cancel if there is no destination
         if(!destination) {
             return;
         }
         //check if item was dropped in same place
         if(destination.droppableId === source.droppableId && destination.index === source.index) {
+            return;
+        }
+        //check type
+        if(type === 'feature') {
+            const newFeatureOrder = Array.from(project.featureOrder);
+            newFeatureOrder.splice(source.index, 1);
+            newFeatureOrder.splice(destination.index, 0, draggableId);
+            const newProject = {
+                ...project,
+                featureOrder: newFeatureOrder,
+            }
+            setProject(newProject);
             return;
         }
         //reorder
@@ -86,20 +98,17 @@ const ProjectDetails = ({OgProject}) => {
                     </div>
                 </div>
             </div>
-            <div className="overlayContainer">
-                {project.featureOrder.map(featureId => {
-                    return (<div id={'featureOverlay'+featureId} key={featureId}>
-                                <FeatureOverlay feature={project.features[featureId]} project={project}/>
-                            </div>
-                            );
-                })}
-            </div>
             <DragDropContext onDragEnd={onDragEnd}>
-                <div className="featureList" id={'feature'+project.id}> 
-                    {project.featureOrder.map(featureId => {
-                        return (<FeatureDetails feature={project.features[featureId]} project={project} key={featureId} />)
-                    })}
-                </div>
+                <Droppable droppableId='all-features' direction='horizontal' type='feature'>
+                    {provided => (
+                        <div className="featureList" id={'feature'+project.id} {...provided.droppableProps} ref={provided.innerRef}> 
+                            {project.featureOrder.map((featureId, index) => {
+                                return (<FeatureDetails feature={project.features[featureId]} project={project} index={index} key={featureId} />)
+                            })}
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
             </DragDropContext>
         </div>
     );
