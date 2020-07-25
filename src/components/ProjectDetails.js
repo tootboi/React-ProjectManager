@@ -54,6 +54,7 @@ const ProjectDetails = ({project}) => {
                 featureOrder: newFeatureOrder,
             }
             setProject(newProject);
+            dispatch({type: 'REORDER_FEATURE', reorder: {projectId: project.id, newFeatureOrder: newFeatureOrder}});
             return;
         }
         //reorder
