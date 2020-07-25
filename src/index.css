@@ -288,4 +288,10 @@ textarea:focus {
   width: calc(100% - 1em - 8px - 4%);
   margin-left: calc(.7em + 8px);
   font-size: .8em;
+  cursor: text;
+}
+
+.taskText:focus {
+  outline-color: #b8b8b8;
+  outline-width: 1px;
 }
