@@ -79,6 +79,17 @@ export const projectReducer = (state, action) => {
                     return project
                 }
             })
+        case 'REORDER_FEATURE':
+            return state.map(project => {
+                if(project.id === action.reorder.projectId) {
+                    return project = {
+                        ...project,
+                        featureOrder: action.reorder.newFeatureOrder,
+                    }
+                } else {
+                    return project
+                }
+            })
         case 'INCREMENT_DONE':
             return state.map(project => {
                 if(project.id === action.ids.projectId) {
