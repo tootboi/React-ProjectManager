@@ -17,10 +17,7 @@ const ProjectDetails = ({project}) => {
             const featureList = [...document.getElementById('feature'+project.id).children];
             featureList.forEach(feature => {
                 feature.classList.toggle('largerFeature');
-            })
-            const taskContainers = [...document.getElementsByClassName('taskContainer')];
-            taskContainers.forEach(tsakContainer => {
-                tsakContainer.classList.toggle('unhide');
+                feature.children[1].children[2].classList.toggle('unhide');
             })
         }
     }
