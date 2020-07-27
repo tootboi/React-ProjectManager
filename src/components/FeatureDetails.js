@@ -7,9 +7,9 @@ import FeatureOverlay from './FeatureOverlay';
 const FeatureDetails = ({feature, project, index}) => {
     const isDone = () => {
         if(project.doneFeatures.includes(feature.id)) {
-            return "featureContainer done";
+            return " done";
         } else {
-            return "featureContainer";
+            return "";
         }
     }
     const overlayOn = (e) => {
@@ -20,35 +20,37 @@ const FeatureDetails = ({feature, project, index}) => {
         textarea.value = feature.title;
         textarea.focus();
     }
-    return (
-        <div className="feature">
-            <div className="overlayContainer">
-                <div id={'featureOverlay'+feature.id}>
-                    <FeatureOverlay feature={project.features[feature.id]} project={project}/>
-                </div>
-            </div>
+    return ( 
             <Draggable draggableId={feature.id} index={index}>
                 {provided => (
-                    <div className={isDone()} id={feature.id} {...provided.draggableProps} ref={provided.innerRef}>
-                        <div className="featureTitle" onClick={overlayOn} {...provided.dragHandleProps} type='task'>{feature.title}</div>
-                        <hr/>
-                        <div className='taskContainer' id={'task'+feature.id}>
-                            <Droppable droppableId={feature.id}>
-                                {(provided) => (
-                                    <div ref={provided.innerRef} {...provided.droppableProps}>
-                                        {feature.taskIds.map((taskId, index) => {
-                                            return(<TaskDetails key={taskId} feature={feature} project={project} task={project.tasks[taskId]} index={index} />);
-                                        })}
-                                        {provided.placeholder}
-                                    </div>
-                                )}
-                            </Droppable>
-                            <TaskForm feature={feature} project={project} />
+                    <div className={'featureContainer' + isDone()} id={feature.id} {...provided.draggableProps} ref={provided.innerRef}>
+                        <div className='featureWrap'>
+                            <div className="overlayContainer">
+                                <div id={'featureOverlay'+feature.id}>
+                                    <FeatureOverlay feature={project.features[feature.id]} project={project}/>
+                                </div>
+                            </div>
+                            <div className="featureTitle" onClick={overlayOn} {...provided.dragHandleProps} type='task'>{feature.title}</div>
+                            <hr/>
+                            <div className='taskContainer' id={'task'+feature.id}>
+                                <div className={'taskWrap' + isDone()}>
+                                    <Droppable droppableId={feature.id}>
+                                        {(provided) => (
+                                            <div ref={provided.innerRef} {...provided.droppableProps}>
+                                                {feature.taskIds.map((taskId, index) => {
+                                                    return(<TaskDetails key={taskId} feature={feature} project={project} task={project.tasks[taskId]} index={index} />);
+                                                })}
+                                                {provided.placeholder}
+                                            </div>
+                                        )}
+                                    </Droppable>
+                                </div>
+                                <TaskForm feature={feature} project={project} />
+                            </div>
                         </div>
                     </div>
                 )}
             </Draggable>
-        </div>
     );
 }
  

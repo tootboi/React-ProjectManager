@@ -15,6 +15,7 @@ const FeatureOverlay = ({feature, project}) => {
         e.preventDefault();
         setDone(!isDone);
         document.getElementById(feature.id).classList.toggle('done');
+        document.getElementById(feature.id).children[0].children[3].children[0].classList.toggle('done');
         isDone ? dispatch({type: 'DECREMENT_DONE', ids: {projectId: project.id, featureId: feature.id}}) : dispatch({type: 'INCREMENT_DONE', ids: {projectId: project.id, featureId: feature.id}});
         overlayOff();
     }

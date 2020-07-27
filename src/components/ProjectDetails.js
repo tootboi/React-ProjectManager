@@ -16,9 +16,8 @@ const ProjectDetails = ({project}) => {
             document.getElementById('feature'+project.id).classList.toggle('expandList');
             const featureList = [...document.getElementById('feature'+project.id).children];
             featureList.forEach(feature => {
-                feature.classList.toggle('largerFeature');
-                feature.children[1].classList.toggle('largerFeature');
-                feature.children[1].children[2].classList.toggle('unhide');
+                feature.children[0].classList.toggle('largerFeature');
+                feature.children[0].children[3].classList.toggle('unhide');
             })
         }
     }

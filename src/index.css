@@ -86,15 +86,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .featureContainer {
-  height: 100%;
-  width: 17vh;
+  margin: 1vh;
   background-color: #f8f8f8;
   border-radius: 10px;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
-.featureContainer > div{
+.featureWrap {
   margin: 10px;
+  width: 17vh;
 }
 
 div.project {
@@ -224,7 +225,8 @@ input[type='submit']:focus {
 }
 
 .done {
-  opacity: .5;
+  background-color: #f8f8f88c;
+  color: rgba(0, 0, 0, 0.562);
 }
 
 .finishBtn {
@@ -282,7 +284,6 @@ textarea:focus {
 
 .tasks {
   border-bottom: 2px solid #b8b8b8;
-  background-color: #f8f8f8;
   text-align: left;
   position: relative;
   margin-bottom: 3px;
@@ -290,7 +291,7 @@ textarea:focus {
 
 .taskForm {
   position: absolute;
-  bottom: 0;
+  bottom: 9px;
   left: 0;
   margin: 1vh;
   border-bottom: 1px solid #64bdba;
@@ -298,6 +299,10 @@ textarea:focus {
 
 .taskContainer {
   display: none;
+}
+
+.taskWrap {
+  background-color: transparent;
 }
 
 .unhide {
