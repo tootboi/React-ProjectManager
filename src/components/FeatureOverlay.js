@@ -23,11 +23,16 @@ const FeatureOverlay = ({feature, project}) => {
         dispatch({type: 'DELETE_FEATURE', deleteFeature: {projectId: project.id, featureId: feature.id}})
         if(isDone) dispatch({type: 'DECREMENT_DONE', ids: {projectId: project.id, featureId: feature.id}});
     }
+    const checkKeys = (e) => {
+        if(e.keyCode === 27) {
+            overlayOff();
+        }
+    }
     const overlayOff = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'none';
     }
     return (
-        <div className="overlay" style={{opacity: '1'}}>
+        <div className="overlay" style={{opacity: '1'}} onKeyDown={checkKeys}>
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
             <form className="finishBtn" action="" onSubmit={handleDone} >
                 <input type="submit" value={isDone ? 'actually, not finished' : 'finished'} 

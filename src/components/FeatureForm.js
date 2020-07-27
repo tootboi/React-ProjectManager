@@ -10,11 +10,16 @@ const FeatureForm = ({project}) => {
         dispatch({type: 'ADD_FEATURE', addFeature: {featureTitle: feature, projectId: project.id}});
         setFeature('');
     }
+    const checkKeys = (e) => {
+        if(e.keyCode === 27) {
+            overlayOff();
+        }
+    }
     const overlayOff = (e) => {
         document.getElementById('featureForm'+project.id).style.display = 'none';
     }
     return (
-        <div className="overlay">
+        <div className="overlay" onKeyDown={checkKeys}>
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
             <div className='projectTitle'>{ project.title }</div>
             <form action="" onSubmit={handleSubmit}>

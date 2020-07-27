@@ -13,12 +13,17 @@ const ProjectOverlay = ({project}) => {
         dispatch({type: 'EDIT_PROJECT', editProject: {title: title, id: project.id}});
         overlayOff();
     }
+    const checkKeys = (e) => {
+        if(e.keyCode === 27) {
+            overlayOff();
+        }
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type: 'DELETE_PROJECT', id: project.id});
     }
     return (
-        <div className="overlay">
+        <div className="overlay" onKeyDown={checkKeys}>
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
             <input type="text" className='projectTitle' value={title}
                         onChange={(e) => setTitle(e.target.value)} required style={{marginTop: '3.6%', fontSize: '2em', textAlign: 'center', color: '#37bfd9', WebkitTextFillColor: 'transparent', WebkitTextStroke: '.04em #37bfd9'}}/>

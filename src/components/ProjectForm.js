@@ -11,11 +11,16 @@ const ProjectForm = () => {
         setProject('');
         overlayOff();
     }
+    const checkKeys = (e) => {
+        if(e.keyCode === 27) {
+            overlayOff();
+        }
+    }
     const overlayOff = (e) => {
         document.getElementById('projectForm').style.display = 'none';
     }
     return (
-        <div className="overlay">
+        <div className="overlay" onKeyDown={checkKeys}>
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
             <form action="" onSubmit={handleSubmit}>
                 <input className='projectFormTitle' type="text" value={project}
