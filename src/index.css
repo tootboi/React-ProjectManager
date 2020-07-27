@@ -39,10 +39,13 @@ body::-webkit-scrollbar-thumb {
   height: 25vh;
   width: 95vw;
   margin-bottom: 10px;
+  display: flex;
 }
 
 .featureList {
-  white-space: nowrap;
+  height: 100%;
+  width: 87vw;
+  display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
   --scrollbarBG: transparent;
@@ -72,12 +75,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .feature {
-  white-space: normal;
-  position: relative;
-  width: 17vh;
   height: 23vh;
   overflow-wrap: break-word;
-  display: inline-flex;
+  display: flex;
   margin: 1vh;
 }
 
@@ -87,7 +87,7 @@ body::-webkit-scrollbar-thumb {
 
 .featureContainer {
   height: 100%;
-  width: 100%;
+  width: 17vh;
   background-color: #f8f8f8;
   border-radius: 10px;
   text-align: center;
@@ -98,7 +98,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 div.project {
-  float: left;
   width: 25vh;
   height: 100%;
   text-align: center;
