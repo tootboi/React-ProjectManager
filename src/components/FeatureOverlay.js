@@ -31,13 +31,13 @@ const FeatureOverlay = ({feature, project}) => {
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
             <form className="finishBtn" action="" onSubmit={handleDone} >
                 <input type="submit" value={isDone ? 'actually, not finished' : 'finished'} 
-                    style={isDone ? {backgroundColor: '#74bcaf', color: '#f8f8f8'}:{color: '#74bcaf'}}
+                    style={isDone ? {backgroundColor: 'transparent', color: '#5bbdc0', width: '100%'}:{width: '100%'}}
                 />
             </form>
             <textarea name="featureArea" id="" cols="30" rows="10" value={newFeature} onChange={(e) => setFeature(e.target.value)} required style={{marginTop: '3%', fontSize: '1em'}}></textarea>
             <div className='BtnContainer'>
                 <form action="" onSubmit={handleDelete}>
-                    <input type="submit" value="delete feature" style={{backgroundColor: '#74bcaf', color: '#f8f8f8', borderRadius: '8px'}}/>
+                    <input type="submit" value="delete feature" style={{backgroundColor: '#f8f8f8', color: '#74bcaf'}}/>
                 </form>
                 <form action="" onSubmit={editFeature}>
                     <input type="submit" value="edit feature"/>

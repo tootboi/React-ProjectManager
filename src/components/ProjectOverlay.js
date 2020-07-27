@@ -24,10 +24,10 @@ const ProjectOverlay = ({project}) => {
                         onChange={(e) => setTitle(e.target.value)} required style={{marginTop: '3.6%', fontSize: '2em', textAlign: 'center', color: '#37bfd9', WebkitTextFillColor: 'transparent', WebkitTextStroke: '.04em #37bfd9'}}/>
             <div className="BtnContainer">
                 <form action="" onSubmit={handleSubmit}>
-                    <input type="submit" value="delete project" style={{backgroundColor: '#5bbdc0', color: '#f8f8f8', borderRadius: '8px'}}/>
+                    <input type="submit" value="delete project" style={{backgroundColor: 'transparent', color: '#5bbdc0'}}/>
                 </form>
                 <form action="" onSubmit={handleEdit}  style={{position: 'relative'}}>
-                    <input type="submit" value="edit" style={{color: '#5bbdc0'}}/>
+                    <input type="submit" value="edit"/>
                 </form>
             </div>
         </div>

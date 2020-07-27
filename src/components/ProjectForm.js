@@ -18,9 +18,11 @@ const ProjectForm = () => {
         <div className="overlay">
             <div className="closeBtn" onClick={overlayOff}>&otimes;</div>
             <form action="" onSubmit={handleSubmit}>
-                <input type="text" value={project}
+                <input className='projectFormTitle' type="text" value={project}
                     onChange={(e) => setProject(e.target.value)} required/>
-                <input type="submit" value="add a project"/>
+                <div className="BtnContainer" style={{margin: 0}}>
+                    <input type="submit" value="add a project"/>
+                </div>
             </form>
         </div>
     );

@@ -20,7 +20,9 @@ const FeatureForm = ({project}) => {
             <form action="" onSubmit={handleSubmit}>
                 <input type="text" value={feature}
                     onChange={(e) => setFeature(e.target.value)} required/>
-                <input type="submit" value="add a feature"/>
+                <div className="BtnContainer" style={{margin: 0}}>
+                    <input type="submit" value="add a feature"/>
+                </div>
             </form>
         </div>
     );

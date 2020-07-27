@@ -205,12 +205,14 @@ input[type='text']:focus {
 
 input[type='submit'] {
   display: block;
-  width: 100%;
+  width: 95%;
   border: 0;
-  background-color: transparent;
+  margin: auto;
   cursor: pointer;
   font-size: 1.1em;
-  color: #74bcaf;
+  background-color: #5bbdc0;
+  color: #f8f8f8;
+  border-radius: 8px;
 }
 
 input[type='submit']:focus {
@@ -232,8 +234,8 @@ input[type='submit']:focus {
   bottom: 3%;
   width: min-content;
   margin: auto;
-  border: 2px #74bcaf solid;
-  border-radius: 5px;
+  border: 2px #5bbdc0 solid;
+  border-radius: 11px;
   background-color: transparent;
   margin-bottom: 3%;
   margin-top: 1%;
@@ -331,4 +333,14 @@ textarea:focus {
 .taskText:focus {
   outline-color: #b8b8b8;
   outline-width: 1px;
+}
+
+.projectFormTitle {
+  background-color: transparent;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-style: italic;
+  color: rgb(55, 191, 217);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .04em rgb(55, 191, 217);
 }
