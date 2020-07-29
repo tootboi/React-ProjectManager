@@ -299,6 +299,32 @@ textarea:focus {
 
 .taskContainer {
   display: none;
+  height: 85%;
+  overflow-y: auto;
+  --scrollbarBG: transparent;
+  --thumbBG: #989ea1c9;
+  --hoverThumbBG: #94989b;
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+.taskContainer::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+.taskContainer::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+.taskContainer::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+.taskContainer::-webkit-scrollbar-thumb:hover {
+  background-color: var(--hoverThumbBG);
 }
 
 .taskWrap {
