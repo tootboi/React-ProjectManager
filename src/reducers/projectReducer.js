@@ -170,6 +170,42 @@ export const projectReducer = (state, action) => {
                     return project
                 }
             });
+        case 'FINISH_TASK':
+            return state.map(project => {
+                if(project.id === action.finishTask.projectId) {
+                    return project = {
+                        ...project,
+                        features: {
+                            ...project.features,
+                            [action.finishTask.featureId]: {
+                                ...project.features[action.finishTask.featureId],
+                                tasksDone: project.features[action.finishTask.featureId].tasksDone + 1,
+                                doneTasks: [...project.features[action.finishTask.featureId].doneTasks, action.finishTask.taskId]
+                            }
+                        }
+                    }
+                } else {
+                    return project
+                }
+            });
+        case 'UNFINISH_TASK':
+            return state.map(project => {
+                if(project.id === action.unfinishTask.projectId) {
+                    return project = {
+                        ...project,
+                        features: {
+                            ...project.features,
+                            [action.unfinishTask.featureId]: {
+                                ...project.features[action.unfinishTask.featureId],
+                                tasksDone: project.features[action.unfinishTask.featureId].tasksDone - 1,
+                                doneTasks: project.features[action.unfinishTask.featureId].doneTasks.filter(id => id !== action.unfinishTask.taskId)
+                            }
+                        }
+                    }
+                } else {
+                    return project
+                }
+            });
         default:
             return state
     }
