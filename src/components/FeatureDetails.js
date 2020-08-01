@@ -42,6 +42,12 @@ const FeatureDetails = ({feature, project, index}) => {
                                 </div>
                                 <TaskForm feature={feature} project={project} />
                             </div>
+                            <div className="taskCount">
+                                <div>
+                                    {feature.tasksDone} / {feature.taskIds.length}
+                                </div>
+                                <div>tasks done</div>
+                            </div>
                         </div>
                     </div>
                 )}

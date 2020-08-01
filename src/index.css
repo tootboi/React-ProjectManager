@@ -96,6 +96,7 @@ body::-webkit-scrollbar-thumb {
 .featureWrap {
   margin: 10px;
   width: 17vh;
+  height: 100%;
 }
 
 div.project {
@@ -379,4 +380,11 @@ textarea:focus {
 .taskDone {
   text-decoration-line: line-through;
   opacity: .6;
+}
+
+.taskCount {
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
