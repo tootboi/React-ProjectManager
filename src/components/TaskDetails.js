@@ -6,7 +6,16 @@ import ContentEditable from 'react-simple-contenteditable';
 const TaskDetails = ({ task, index, feature, project }) => {
     const { dispatch } = useContext(ProjectContext);
     const [newTask, setNewTask] = useState(task.content);
+    const done = feature.doneTasks.includes(task.id) ? 'taskDone' : '';
 
+    const taskDone = (e) => {
+        document.getElementById('task'+task.id).classList.toggle('taskDone');
+        if(done === '') {
+            dispatch({type: 'FINISH_TASK', finishTask: {projectId: project.id, featureId: feature.id, taskId: task.id}});
+        } else {
+            dispatch({type: 'UNFINISH_TASK', unfinishTask: {projectId: project.id, featureId: feature.id, taskId: task.id}});
+        }
+    }
     const editTask =(e, value) => {
         setNewTask(value);
         dispatch({type: 'EDIT_TASK', editTask: {projectId: project.id, taskId: task.id, taskContent: value}});
@@ -17,8 +26,8 @@ const TaskDetails = ({ task, index, feature, project }) => {
     return(
         <Draggable draggableId={task.id} index={index}>
             {(provided) => (
-                <div className="tasks" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                    <span className='dot'></span>
+                <div className={"tasks " + done} id={'task'+task.id} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <span className='dot' onClick={taskDone}></span>
                     <ContentEditable
                         html={newTask}
                         className='taskText'

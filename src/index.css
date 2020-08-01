@@ -287,6 +287,7 @@ textarea:focus {
   text-align: left;
   position: relative;
   margin-bottom: 3px;
+  background-color: #f8f8f8;
 }
 
 .taskForm {
@@ -373,4 +374,9 @@ textarea:focus {
   color: rgb(55, 191, 217);
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .04em rgb(55, 191, 217);
+}
+
+.taskDone {
+  text-decoration-line: line-through;
+  opacity: .6;
 }
