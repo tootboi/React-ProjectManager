@@ -5,13 +5,8 @@ import TaskForm from './TaskForm';
 import FeatureOverlay from './FeatureOverlay';
 
 const FeatureDetails = ({feature, project, index}) => {
-    const isDone = () => {
-        if(project.doneFeatures.includes(feature.id)) {
-            return " done";
-        } else {
-            return "";
-        }
-    }
+    const isDone = project.doneFeatures.includes(feature.id) ? 'done' : '';
+
     const overlayOn = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'block';
         //these lines focus the cursor to the end of the textarea.
@@ -23,7 +18,7 @@ const FeatureDetails = ({feature, project, index}) => {
     return ( 
             <Draggable draggableId={feature.id} index={index}>
                 {provided => (
-                    <div className={'featureContainer' + isDone()} id={feature.id} {...provided.draggableProps} ref={provided.innerRef}>
+                    <div className={'featureContainer ' + isDone} id={feature.id} {...provided.draggableProps} ref={provided.innerRef}>
                         <div className='featureWrap'>
                             <div className="overlayContainer">
                                 <div id={'featureOverlay'+feature.id}>
@@ -33,7 +28,7 @@ const FeatureDetails = ({feature, project, index}) => {
                             <div className="featureTitle" onClick={overlayOn} {...provided.dragHandleProps} type='task'>{feature.title}</div>
                             <hr/>
                             <div className='taskContainer' id={'task'+feature.id}>
-                                <div className={'taskWrap' + isDone()}>
+                                <div className={'taskWrap ' + isDone}>
                                     <Droppable droppableId={feature.id}>
                                         {(provided) => (
                                             <div ref={provided.innerRef} {...provided.droppableProps}>
