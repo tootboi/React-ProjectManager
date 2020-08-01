@@ -22,9 +22,10 @@ const TaskDetails = ({ task, index, feature, project }) => {
                     <ContentEditable
                         html={newTask}
                         className='taskText'
+                        onKeyPress={editTask}
                         onChange={editTask}
                         contentEditable="plaintext-only"
-                    />
+                    />                    
                     <span className='deleteBtn' onClick={deleteTask}>&times;</span>
                 </div>
             )}
