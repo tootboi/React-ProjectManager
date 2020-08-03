@@ -8,10 +8,11 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 const ProjectDetails = ({project}) => {
     const { dispatch } = useContext(ProjectContext);
     const [dragProject, setProject] = useState(project);
-    // console.log('project: ', project, '\n   drag: ', dragProject);
+    const isExpanded = project.isExpanded ? 'expanded' : '';
 
     const expandProject = (e) => {
         if(project.featureOrder.length > 0) {
+            dispatch({type: 'EXPAND_PROJECT', projectId: project.id});
             document.getElementById('projectDetail'+project.id).classList.toggle('expanded');
             document.getElementById('feature'+project.id).classList.toggle('expandList');
             const featureList = [...document.getElementById('feature'+project.id).children];
@@ -76,7 +77,7 @@ const ProjectDetails = ({project}) => {
         dispatch({type: 'REORDER_TASK', reorder: {projectId: project.id, featureId: feature.id, newTaskIds: newTaskIds}})
     }
     return (
-        <div className="projectDetail" id={'projectDetail'+project.id}>
+        <div className={"projectDetail " + isExpanded} id={'projectDetail'+project.id}>
             <div className="overlayContainer">
                 <div id={'featureForm'+project.id}>
                     <FeatureForm project={project}/>

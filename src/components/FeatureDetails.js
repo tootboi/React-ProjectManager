@@ -6,6 +6,8 @@ import FeatureOverlay from './FeatureOverlay';
 
 const FeatureDetails = ({feature, project, index}) => {
     const isDone = project.doneFeatures.includes(feature.id) ? 'done' : '';
+    const isExpanded = project.isExpanded ? 'largerFeature' : '';
+    const hideTask = project.isExpanded ? 'unhide' : '';
 
     const overlayOn = (e) => {
         document.getElementById('featureOverlay'+feature.id).style.display = 'block';
@@ -19,7 +21,7 @@ const FeatureDetails = ({feature, project, index}) => {
             <Draggable draggableId={feature.id} index={index}>
                 {provided => (
                     <div className={'featureContainer ' + isDone} id={feature.id} {...provided.draggableProps} ref={provided.innerRef}>
-                        <div className='featureWrap'>
+                        <div className={'featureWrap ' + isExpanded}>
                             <div className="overlayContainer">
                                 <div id={'featureOverlay'+feature.id}>
                                     <FeatureOverlay feature={project.features[feature.id]} project={project}/>
@@ -27,7 +29,7 @@ const FeatureDetails = ({feature, project, index}) => {
                             </div>
                             <div className="featureTitle" onClick={overlayOn} {...provided.dragHandleProps} type='task'>{feature.title}</div>
                             <hr/>
-                            <div className='taskContainer' id={'task'+feature.id}>
+                            <div className={'taskContainer ' + hideTask} id={'task'+feature.id}>
                                 <div className={'taskWrap ' + isDone}>
                                     <Droppable droppableId={feature.id}>
                                         {(provided) => (
