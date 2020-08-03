@@ -7,6 +7,7 @@ export const projectReducer = (state, action) => {
                 title: action.title,
                 tasks: {},
                 features: {},
+                isExpanded: false,
                 featureOrder: [],
                 featuresDone: 0,
                 doneFeatures: [],
@@ -23,6 +24,17 @@ export const projectReducer = (state, action) => {
                     }
                 } else {
                     return project
+                }
+            })
+        case 'EXPAND_PROJECT':
+            return state.map(project => {
+                if(project.id === action.projectId) {
+                    return project = {
+                        ...project,
+                        isExpanded: !project.isExpanded,
+                    }
+                } else {
+                    return project;
                 }
             })
         case 'ADD_FEATURE':
