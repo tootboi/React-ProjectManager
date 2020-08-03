@@ -32,6 +32,7 @@ const ProjectContextProvider = (props) => {
                 doneTasks: [],
             },
         },
+        isExpanded: false,
         featureOrder: ['unique1', 'unique2'],
         featuresDone: 0, 
         doneFeatures: [],
