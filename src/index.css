@@ -15,7 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 2vh;
+  font-size: calc(2.5vh - 1px);
 }
 
 body::-webkit-scrollbar {
@@ -36,7 +36,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .projectDetail {
-  height: 25vh;
+  height: 30vh;
   width: 95vw;
   margin-bottom: 10px;
   display: flex;
@@ -288,7 +288,6 @@ textarea:focus {
   text-align: left;
   position: relative;
   margin-bottom: 3px;
-  background-color: #f8f8f8;
 }
 
 .taskForm {
@@ -358,7 +357,7 @@ textarea:focus {
 .taskText {
   width: calc(100% - 1em - 8px - 4%);
   margin-left: calc(.7em + 8px);
-  font-size: .8em;
+  font-size: calc(2vh - .0em);
   cursor: text;
 }
 
